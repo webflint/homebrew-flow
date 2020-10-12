@@ -32,16 +32,33 @@ $ brew install webflint-flow
 
 Create a new [personal access token](https://github.com/settings/tokens) and export it as `GH_TOKEN`
 
-### JIRA
+### Project Management Backend
+
+#### Connecting JIRA
 
 1. Create a API Token in your [JIRA account settings](https://id.atlassian.com/manage-profile/security/api-tokens)
 2. Export `JIRA_HOST=yourcompany.atlassian.net`
 3. Export `JIRA_USER_NAME=your@email.address`
 4. Export `JIRA_AUTH_TOKEN=your-api-token`
 
+### Repo Configuration
+
+Each local clone of a Git repo must be configured to map to a project in your Project Managment software.   This can be done by setting the `project_id` configuration setting to your project id where tickets are managed.
+
+```
+flow config set project_id PROJECT-KEY
+```
+
+Once this is done, you may view the project's details by running:
+
+```
+$ flow project show
+```
+
+
 #### JIRA Story States
 
-Since JIRA allows for custom defined workflows it is recommended you map those to the flow states.
+Since JIRA allows for custom defined workflows it is recommended you map those to the Flow states.
 
 `flow config set state.started YOUR_JIRA_STARTED_LABEL`
 
@@ -61,23 +78,27 @@ Once you've done the above, run `flow config` at the command line to verify you 
 
 ## Autocompletion
 
-### Bash
-Add the following to your `~/.bashrc` making sure to replace `TRACKER_FLOW_PATH` with
-the path to where you checked out Tracker Flow
+Autocompletion will be available after installation if you've already setup [Homebrew autocompletion](https://docs.brew.sh/Shell-Completion)
+
+### Manual configuration
+
+If you rather manually configure autocompletion, please follow the steps below.
+
+#### Bash
+Add the following to `~/.bashrc`
 
 ```bash
-export FLOW_BASE_DIR="$HOME/Dev/tracker-flow"
+FLOW_BASE_DIR="$(dirname $(realpath "$(which flow)"))/../"
 if [ -d "$FLOW_BASE_DIR" ]; then
-  PATH=$FLOW_BASE_DIR/bin:$PATH
   . "$FLOW_BASE_DIR/etc/bash_completion.d/flow_completion.bash"
 fi
 ```
 
-### Zsh
+#### Zsh
 
 Add the following to your `~/.zshrc`
 
 ```
-export FLOW_BASE_DIR="$HOME/Dev/tracker-flow"
+FLOW_BASE_DIR="$(dirname $(realpath "$(which flow)"))/../"
 source "$FLOW_BASE_DIR/etc/autocomplete.zsh"
 ```
