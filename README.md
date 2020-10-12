@@ -102,3 +102,7 @@ Add the following to your `~/.zshrc`
 FLOW_BASE_DIR="$(dirname $(realpath "$(which flow)"))/../"
 source "$FLOW_BASE_DIR/etc/autocomplete.zsh"
 ```
+
+## Usage
+
+See the [documentation](https://github.com/webflint/homebrew-flow/blob/master/docs/commands.md) for usage information.
