@@ -43,10 +43,10 @@ Create a new [personal access token](https://github.com/settings/tokens) and exp
 
 ### Repo Configuration
 
-Each local clone of a Git repo must be configured to map to a project in your Project Managment software.   This can be done by setting the `project_id` configuration setting to your project id where tickets are managed.
+Each local clone of a Git repo must be configured to map to a project in your Project Managment software.   This can be done by setting the `projectid` configuration setting to your project id where tickets are managed.
 
 ```
-flow config set project_id PROJECT-KEY
+flow config set projectid PROJECT-KEY
 ```
 
 Once this is done, you may view the project's details by running:
